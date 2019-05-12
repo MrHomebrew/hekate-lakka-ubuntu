@@ -59,11 +59,11 @@ int create_config_entry()
 
 	LIST_INIT(ini_sections);
 
-	if (ini_parse(&ini_sections, "bootloader/hekate_ipl.ini", false))
+	if (ini_parse(&ini_sections, "bootloader/lakka.ini", false))
 		mainIniFound = true;
 	else
 	{
-		u8 res = f_open(&fp, "bootloader/hekate_ipl.ini", FA_READ);
+		u8 res = f_open(&fp, "bootloader/lakka.ini", FA_READ);
 		if (res == FR_NO_FILE || res == FR_NO_PATH)
 		{
 			f_mkdir("bootloader");
@@ -79,7 +79,7 @@ int create_config_entry()
 		}
 	}
 
-	if (f_open(&fp, "bootloader/hekate_ipl.ini", FA_WRITE | FA_CREATE_ALWAYS) != FR_OK)
+	if (f_open(&fp, "bootloader/lakka.ini", FA_WRITE | FA_CREATE_ALWAYS) != FR_OK)
 		return 1;
 	// Add config entry.
 	f_puts("[config]\nautoboot=", &fp);
@@ -242,7 +242,7 @@ static void _config_autoboot_list(void *ent)
 		}
 		else
 		{
-			EPRINTF("Could not open 'bootloader/hekate_ipl.ini'.\nMake sure it exists!.");
+			EPRINTF("Could not open 'bootloader/lakka.ini'.\nMake sure it exists!.");
 			goto out;
 		}
 	}
@@ -278,7 +278,7 @@ void config_autoboot()
 
 	if (sd_mount())
 	{
-		if (ini_parse(&ini_sections, "bootloader/hekate_ipl.ini", false))
+		if (ini_parse(&ini_sections, "bootloader/lakka.ini", false))
 		{
 			// Build configuration menu.
 			ments[0].type = MENT_BACK;
@@ -355,7 +355,7 @@ void config_autoboot()
 		}
 		else
 		{
-			EPRINTF("Could not open 'bootloader/hekate_ipl.ini'.\nMake sure it exists!.");
+			EPRINTF("Could not open 'bootloader/lakka.ini'.\nMake sure it exists!.");
 			goto out;
 		}
 	}
