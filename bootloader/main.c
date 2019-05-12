@@ -575,7 +575,7 @@ void launch_firmware()
 
 	if (sd_mount())
 	{
-		if (ini_parse(&ini_sections, "bootloader/lakka.ini", false))
+		if (ini_parse(&ini_sections, "bootloader/ubuntu.ini", false))
 		{
 			// Build configuration menu.
 			ment_t *ments = (ment_t *)malloc(sizeof(ment_t) * (max_entries + 6));
@@ -658,7 +658,7 @@ void launch_firmware()
 			ini_free(&ini_sections);
 		}
 		else
-			EPRINTF("Could not open 'bootloader/lakka.ini'.\nMake sure it exists!");
+			EPRINTF("Could not open 'bootloader/ubuntu.ini'.\nMake sure it exists!");
 	}
 
 	if (!cfg_sec)
@@ -722,10 +722,10 @@ void auto_launch_firmware()
 
 	if (sd_mount())
 	{
-		if (f_stat("bootloader/lakka.ini", NULL))
+		if (f_stat("bootloader/ubuntu.ini", NULL))
 			create_config_entry();
 
-		if (ini_parse(&ini_sections, "bootloader/lakka.ini", false))
+		if (ini_parse(&ini_sections, "bootloader/ubuntu.ini", false))
 		{
 			u32 configEntry = 0;
 			u32 boot_entry_id = 0;
@@ -835,7 +835,7 @@ void auto_launch_firmware()
 				goto out; // No configurations.
 		}
 		else
-			goto out; // Can't load lakka.ini.
+			goto out; // Can't load ubuntu.ini.
 	}
 	else
 		goto out;
