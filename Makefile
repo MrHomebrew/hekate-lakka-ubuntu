@@ -16,7 +16,7 @@ BL_RESERVED := 0
 
 ################################################################################
 
-TARGET := lakka
+TARGET := hekate
 BUILDDIR := build
 OUTPUTDIR := output
 SOURCEDIR = bootloader
